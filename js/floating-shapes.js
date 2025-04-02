@@ -1,7 +1,7 @@
 /**
  * Floating Shapes Animation
  * Creates tech-inspired floating shapes with interactive hover effects
- * Enhanced to match the original React/Framer Motion version
+ * Enhanced to match the original React/Framer Motion version (v4)
  */
 document.addEventListener('DOMContentLoaded', function() {
   const floatingShapesContainer = document.getElementById('floating-shapes');
@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         y: [-20, 0, -20],
         rotate: [0, 10, 0],
         scale: [1, 1.05, 1],
+        opacity: [0.7, 1, 0.7], // Added opacity animation
       },
       duration: 8,
       delay: 0.2,
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         y: [0, 20, 0],
         rotate: [0, -15, 0],
         scale: [1, 1.1, 1],
+        opacity: [0.8, 1, 0.8], // Added opacity animation
       },
       duration: 10,
       delay: 0.5,
@@ -49,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         y: [0, 15, 0],
         rotate: [0, 20, 0],
         scale: [1, 1.08, 1],
+        opacity: [0.7, 1, 0.7], // Added opacity animation
       },
       duration: 9,
       delay: 0.8,
@@ -64,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         y: [0, -15, 0],
         rotate: [0, -10, 0],
         scale: [1, 1.05, 1],
+        opacity: [0.8, 1, 0.8], // Added opacity animation
       },
       duration: 7,
       delay: 1.1,
@@ -71,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
     },
   ];
 
-  // Create particles
+  // Create particles with enhanced interaction
   function createParticles() {
     const particlesContainer = document.createElement('div');
     particlesContainer.className = 'particles-container';
@@ -119,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
       particlesContainer.appendChild(particleEl);
     });
     
-    // Handle mouse movement
+    // Handle mouse movement with improved interaction
     let mouseX = -1000;
     let mouseY = -1000;
     let targetX = mouseX;
@@ -187,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return particlesContainer;
   }
 
-  // Create circuit lines
+  // Create circuit lines with enhanced animation
   function createCircuitLines() {
     const circuitContainer = document.createElement('div');
     circuitContainer.className = 'circuit-container';
@@ -235,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     svg.appendChild(defs);
     
-    // Create circuit paths
+    // Create circuit paths with enhanced animation
     const paths = [
       { d: 'M0,30 C20,40 40,20 60,30 S80,50 100,30', gradient: 'url(#circuitGradient1)', top: '15%', delay: 0 },
       { d: 'M0,50 C30,30 50,70 70,50 S90,30 100,50', gradient: 'url(#circuitGradient2)', top: '35%', delay: 1 },
@@ -276,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
       svg.appendChild(path);
     });
     
-    // Create circuit nodes
+    // Create circuit nodes with enhanced animation
     const nodePositions = [
       { x: 20, y: 15 }, { x: 50, y: 15 }, { x: 80, y: 15 },
       { x: 20, y: 45 }, { x: 50, y: 45 }, { x: 80, y: 45 },
@@ -324,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return circuitContainer;
   }
 
-  // Create shapes
+  // Create shapes with enhanced fade in/out animation
   function createShapes() {
     const shapesContainer = document.createElement('div');
     shapesContainer.className = 'shapes-container';
@@ -419,17 +423,21 @@ document.addEventListener('DOMContentLoaded', function() {
         shapeEl.style.opacity = '1';
         shapeEl.style.transform = 'scale(1)';
         
-        // Start floating animation
-        animateShape(shapeEl, shape.animation, shape.duration);
+        // Start floating animation with fade in/out
+        animateShapeWithFade(shapeEl, shape.animation, shape.duration);
       }, shape.delay * 1000);
       
       // Add hover effect
       shapeEl.addEventListener('mouseenter', () => {
         shapeEl.style.boxShadow = `0 0 10px 2px ${shape.glowColor}, 0 0 20px 5px ${shape.glowColor}`;
+        // Pause the animation on hover
+        shapeEl.dataset.hovered = 'true';
       });
       
       shapeEl.addEventListener('mouseleave', () => {
         shapeEl.style.boxShadow = 'none';
+        // Resume the animation
+        shapeEl.dataset.hovered = 'false';
       });
       
       shapesContainer.appendChild(shapeEl);
@@ -496,12 +504,18 @@ document.addEventListener('DOMContentLoaded', function() {
     return '';
   }
 
-  // Helper function to animate shapes
-  function animateShape(element, animation, duration) {
+  // Helper function to animate shapes with fade in/out effect
+  function animateShapeWithFade(element, animation, duration) {
     let startTime = null;
     const totalDuration = duration * 1000; // Convert to milliseconds
     
     function animate(timestamp) {
+      if (element.dataset.hovered === 'true') {
+        // If hovered, request next frame but don't update animation
+        requestAnimationFrame(animate);
+        return;
+      }
+      
       if (!startTime) startTime = timestamp;
       const elapsed = (timestamp - startTime) % totalDuration;
       const progress = elapsed / totalDuration;
@@ -539,12 +553,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
       
-      // Apply transforms
+      // Add opacity animation (fade in/out)
+      let opacity = 1;
+      if (animation.opacity) {
+        const [start, middle, end] = animation.opacity;
+        if (progress < 0.5) {
+          opacity = start + (middle - start) * (progress * 2);
+        } else {
+          opacity = middle + (end - middle) * ((progress - 0.5) * 2);
+        }
+      }
+      
+      // Apply transforms and opacity
       element.style.transform = `translateY(${translateY}px) rotate(${rotate}deg) scale(${scale})`;
+      element.style.opacity = opacity;
       
       requestAnimationFrame(animate);
     }
     
+    // Initialize hover state
+    element.dataset.hovered = 'false';
+    
+    // Start animation
     requestAnimationFrame(animate);
   }
 
