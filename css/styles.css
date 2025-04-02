@@ -1054,3 +1054,49 @@
     stroke-dasharray: 10, 5;
     animation: data-flow 20s linear infinite;
   }
+
+
+
+  /* Enhanced Animation Keyframes */
+@keyframes float-up-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes rotate-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.8); opacity: 0.8; }
+}
+
+/* Particle Animation */
+.particle {
+  transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Shape Animations */
+.shape {
+  transition: transform 0.5s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+}
+
+.shape:hover {
+  transform: scale(1.05);
+}
+
+.glowing-dot {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+/* Circuit Line Animation */
+.circuit-path {
+  transition: stroke-dashoffset 4s ease-in-out, opacity 4s ease-in-out;
+}
+
+/* Enhanced Scroll Indicator */
+.scroll-dot {
+  animation: scrollAnimation 1.5s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
