@@ -1,27 +1,41 @@
 /**
  * Hero Background Animation
- * Interactive particle system with mouse interaction
- * Enhanced to match the original React/Framer Motion version
+ * Creates an interactive particle field with mouse interaction
  */
 document.addEventListener('DOMContentLoaded', function() {
-  const canvas = document.getElementById('hero-background');
-  if (!canvas) return;
-
+  const canvas = document.createElement('canvas');
+  const heroBackground = document.getElementById('hero-background');
+  
+  if (!heroBackground) return;
+  
+  heroBackground.appendChild(canvas);
+  
   const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-
-  // Initialize variables
+  
   let animationFrameId;
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  const mouseRadius = 150;
-  let isMouseMoving = false;
+  let mouseX = 0;
+  let mouseY = 0;
   let lastMouseX = mouseX;
   let lastMouseY = mouseY;
   let mouseSpeed = 0;
-  let particles = [];
-  let grid;
-
+  let isMouseMoving = false;
+  const mouseRadius = 150;
+  
+  // Resize canvas to fill container
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    // Reset mouse position on resize to avoid particles jumping
+    mouseX = canvas.width / 2;
+    mouseY = canvas.height / 2;
+    
+    // Recreate particles on resize
+    if (particles) {
+      particles = createParticles();
+    }
+  }
+  
   // Track mouse position with improved handling
   function handleMouseMove(e) {
     const rect = canvas.getBoundingClientRect();
@@ -42,31 +56,51 @@ document.addEventListener('DOMContentLoaded', function() {
     mouseTimer = setTimeout(() => {
       isMouseMoving = false;
     }, 100);
+    
+    // Create mouse trail effect
+    if (isMouseMoving && mouseSpeed > 5) {
+      createMouseTrail(e);
+    }
   }
-
+  
   let mouseTimer;
-
-  window.addEventListener('mousemove', handleMouseMove);
-
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  
+  // Create mouse trail effect
+  function createMouseTrail(e) {
+    const trail = document.createElement('div');
+    trail.className = 'mouse-trail';
+    trail.style.position = 'absolute';
+    trail.style.left = `${e.clientX}px`;
+    trail.style.top = `${e.clientY}px`;
+    trail.style.width = `${mouseSpeed * 2}px`;
+    trail.style.height = `${mouseSpeed * 2}px`;
+    trail.style.borderRadius = '50%';
+    trail.style.background = 'radial-gradient(circle, rgba(180, 150, 255, 0.4) 0%, rgba(180, 150, 255, 0) 70%)';
+    trail.style.pointerEvents = 'none';
+    trail.style.zIndex = '1';
+    trail.style.transform = 'translate(-50%, -50%)';
     
-    // Reset mouse position on resize to avoid particles jumping
-    mouseX = canvas.width / 2;
-    mouseY = canvas.height / 2;
+    document.body.appendChild(trail);
     
-    // Recreate particles and grid when canvas is resized
-    createParticlesAndGrid();
+    // Animate and remove
+    setTimeout(() => {
+      trail.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+      trail.style.opacity = '0';
+      trail.style.transform = 'translate(-50%, -50%) scale(2)';
+      
+      setTimeout(() => {
+        document.body.removeChild(trail);
+      }, 500);
+    }, 10);
   }
-
-  // Improved particle class with better mouse interaction
+  
+  // Particle class with enhanced mouse interaction
   class Particle {
     constructor() {
-      this.originalX = Math.random() * canvas.width;
-      this.originalY = Math.random() * canvas.height;
-      this.x = this.originalX;
-      this.y = this.originalY;
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.originalX = this.x;
+      this.originalY = this.y;
       this.baseSize = Math.random() * 3 + 1;
       this.size = this.baseSize;
       this.speedX = (Math.random() - 0.5) * 0.5;
@@ -83,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
       this.pulseSpeed = Math.random() * 0.02 + 0.01;
       this.forceFactor = Math.random() * 0.5 + 0.5; // Randomize how much each particle responds to mouse
     }
-
+    
     update() {
       // Calculate distance from mouse
       const dx = this.x - mouseX;
@@ -91,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
       this.distanceFromMouse = Math.sqrt(dx * dx + dy * dy);
       
       // Dynamic mouse radius based on mouse speed
-      const dynamicMouseRadius = mouseRadius + (mouseSpeed * 2);
+      const dynamicMouseRadius = mouseRadius + mouseSpeed * 2;
       
       // Interactive behavior with improved physics
       if (this.distanceFromMouse < dynamicMouseRadius) {
@@ -122,24 +156,24 @@ document.addEventListener('DOMContentLoaded', function() {
         this.size = Math.max(this.baseSize, this.size - 0.1);
         this.opacity = Math.max(this.minOpacity, this.opacity - 0.01);
       }
-
+      
       // Apply friction for more natural movement
       this.speedX *= 0.95;
       this.speedY *= 0.95;
-
+      
       // Update position
       this.x += this.speedX;
       this.y += this.speedY;
-
+      
       // Rotate
       this.angle += this.rotationSpeed;
-
+      
       // Subtle pulsing effect
       this.size += this.pulseDirection * this.pulseSpeed;
       if (this.size > this.baseSize * 1.5 || this.size < this.baseSize * 0.7) {
         this.pulseDirection *= -1;
       }
-
+      
       // Boundary check with bounce effect
       if (this.x < 0) {
         this.x = 0;
@@ -158,12 +192,12 @@ document.addEventListener('DOMContentLoaded', function() {
         this.speedY *= -0.5;
       }
     }
-
+    
     draw() {
       ctx.save();
       ctx.translate(this.x, this.y);
       ctx.rotate(this.angle);
-
+      
       // Dynamic color based on distance from mouse
       const colorIntensity = Math.min(1, (mouseRadius - this.distanceFromMouse) / mouseRadius);
       const hueShift = isMouseMoving ? (this.distanceFromMouse < mouseRadius ? 30 : 0) : 0;
@@ -181,13 +215,13 @@ document.addEventListener('DOMContentLoaded', function() {
       ctx.arc(0, 0, this.size * 3, 0, Math.PI * 2);
       ctx.fillStyle = glow;
       ctx.fill();
-
+      
       // Draw particle core
       ctx.beginPath();
       ctx.arc(0, 0, this.size, 0, Math.PI * 2);
       ctx.fillStyle = baseColor;
       ctx.fill();
-
+      
       // Draw energy trails for particles affected by mouse
       if (this.distanceFromMouse < mouseRadius && isMouseMoving) {
         const trailLength = Math.min(30, mouseSpeed / 2);
@@ -204,11 +238,11 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.lineWidth = this.size / 2;
         ctx.stroke();
       }
-
+      
       ctx.restore();
     }
   }
-
+  
   // Grid class for background effect
   class Grid {
     constructor() {
@@ -280,46 +314,57 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   }
-
-  // Create particles and grid
-  function createParticlesAndGrid() {
-    particles = [];
+  
+  // Create particles
+  function createParticles() {
+    const particles = [];
     const particleCount = Math.min(100, Math.floor((canvas.width * canvas.height) / 15000));
     
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
     
-    // Create grid
-    grid = new Grid();
+    return particles;
   }
-
+  
   // Initialize
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
-
+  let particles = [];
+  let grid;
+  
+  function init() {
+    resizeCanvas();
+    particles = createParticles();
+    grid = new Grid();
+    
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    // Start animation
+    animate();
+  }
+  
   // Animation loop
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    
     // Draw dark background with subtle gradient
     const gradient = ctx.createRadialGradient(
-      canvas.width / 2, 
-      canvas.height / 2, 
-      0, 
-      canvas.width / 2, 
-      canvas.height / 2, 
+      canvas.width / 2,
+      canvas.height / 2,
+      0,
+      canvas.width / 2,
+      canvas.height / 2,
       canvas.width
     );
     gradient.addColorStop(0, "rgba(10, 10, 20, 1)");
     gradient.addColorStop(1, "rgba(5, 5, 15, 1)");
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+    
     // Update and draw grid
     grid.update();
     grid.draw();
-
+    
     // Draw connection lines between close particles
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
@@ -353,20 +398,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     }
-
+    
     // Update and draw particles
     particles.forEach((particle) => {
       particle.update();
       particle.draw();
     });
-
+    
     // Draw mouse force field effect
     if (isMouseMoving && mouseX > 0 && mouseY > 0) {
-      const forceFieldRadius = mouseRadius + (mouseSpeed * 2);
-      const forceField = ctx.createRadialGradient(
-        mouseX, mouseY, 0, 
-        mouseX, mouseY, forceFieldRadius
-      );
+      const forceFieldRadius = mouseRadius + mouseSpeed * 2;
+      const forceField = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, forceFieldRadius);
       forceField.addColorStop(0, "rgba(150, 100, 255, 0.1)");
       forceField.addColorStop(0.5, "rgba(150, 100, 255, 0.05)");
       forceField.addColorStop(1, "rgba(150, 100, 255, 0)");
@@ -385,20 +427,17 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.stroke();
       }
     }
-
+    
     animationFrameId = requestAnimationFrame(animate);
   }
-
-  animate();
-
-  // Clean up function
-  function cleanup() {
+  
+  // Start the animation
+  init();
+  
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', () => {
     window.removeEventListener('resize', resizeCanvas);
     window.removeEventListener('mousemove', handleMouseMove);
-    clearTimeout(mouseTimer);
     cancelAnimationFrame(animationFrameId);
-  }
-
-  // Add cleanup on page unload
-  window.addEventListener('unload', cleanup);
+  });
 });

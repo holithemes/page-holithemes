@@ -1,322 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HoliThemes - Vibrant Web Technologies</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <!-- Font import -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoliThemes - Vibrant Web Technologies</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navigation -->
-  <header class="navbar">
-    <div class="container">
-      <a href="/" class="logo">
-        <div class="logo-icon"></div>
-        <span class="logo-text">HoliThemes</span>
-      </a>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="/" class="logo">
+                    <div class="logo-circle">
+                        <div class="logo-inner"></div>
+                    </div>
+                    <span class="logo-text gradient-text">HoliThemes</span>
+                </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="nav-desktop">
-        <a href="https://holithemes.com" class="nav-link">Home</a>
-        <a href="https:holithemes.com/plugins/click-to-chat" class="nav-link">Products</a>
-        <a href="https://holithemes.com/services" class="nav-link">Services</a>
-        <a href="https://holithemes.com/blog" class="nav-link">Blog</a>
-        <a href="https://holithemes.com/contact" class="nav-link">Contact</a>
-        <a href="https://holithemes.com/shop" class="btn btn-primary">My Account</a>
-      </nav>
-    
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="/" class="nav-link">Home</a></li>
+                        <li><a href="/products" class="nav-link">Products</a></li>
+                        <li><a href="/services" class="nav-link">Services</a></li>
+                        <li><a href="/blog" class="nav-link">Blog</a></li>
+                        <li><a href="/contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <button class="btn btn-primary">My Account</button>
+                </nav>
 
-      <!-- Mobile Menu Button -->
-      <button class="menu-toggle" aria-label="Toggle menu">
-        <span class="menu-icon"></span>
-      </button>
-    </div>
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span class="menu-icon"></span>
+                </button>
+            </div>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-      <div class="container">
-        <a href="https://holithemes.com">Home</a>
-        <a href="/products" class="mobile-link">Products</a>
-        <a href="/services" class="mobile-link">Services</a>
-        <a href="/blog" class="mobile-link">Blog</a>
-        <a href="/contact" class="mobile-link">Contact</a>
-        <button class="btn btn-primary btn-full">My Account</button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <!-- Hero Section -->
-    <section class="hero">
-      <canvas id="hero-background"></canvas>
-      <div id="floating-shapes"></div>
-
-      <div class="container">
-        <div class="hero-content">
-          <div class="badge">Welcome to the Future of Web Design</div>
-
-          <h1 class="hero-title text-glow">HOLITHEMES</h1>
-
-          <p class="hero-description">
-            We build cutting-edge web technologies that bring your digital presence into the future
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#products" class="btn btn-primary btn-hover-effect">
-              Explore Products
-              <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <!-- <a href="/services" class="btn btn-outline btn-hover-effect">
-              Our Services
-              <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a> -->
-          </div>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu">
+                <nav>
+                    <ul>
+                        <li><a href="/" class="nav-link">Home</a></li>
+                        <li><a href="/products" class="nav-link">Products</a></li>
+                        <li><a href="/services" class="nav-link">Services</a></li>
+                        <li><a href="/blog" class="nav-link">Blog</a></li>
+                        <li><a href="/contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <button class="btn btn-primary btn-full">My Account</button>
+                </nav>
+            </div>
         </div>
-      </div>
+    </header>
 
-      <div class="scroll-indicator">
-        <span>Scroll to explore</span>
-        <div class="scroll-icon">
-          <div class="scroll-dot"></div>
-        </div>
-      </div>
-    </section>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div id="hero-background"></div>
+            <div id="floating-shapes"></div>
 
-    <!-- Products Section -->
-    <section class="products" id="products">
-      <div class="section-bg"></div>
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title text-glow">Our Product</h2>
-          <p class="section-description">
-            Experience an innovative digital solution designed to enhance engagement, streamline communication, and elevate your online presence.
-          </p>
-        </div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="badge">
+                        <span>Welcome to the Future of Web Design</span>
+                    </div>
 
-        <div class="product-grid">
-          <!-- Product Card 1 -->
-          <div class="product-card card-futuristic">
-            <div class="card-accent accent-pink"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <div class="card-icon">🚀</div>
-                <div class="card-plus">+</div>
-              </div>
-              <h3 class="card-title text-glow">Click to Chat</h3>
-              <p class="card-description">Trusted by 600,000+ active users with a 4.8-star rating, helping businesses connect with customers seamlessly and grow faster through WhatsApp-driven engagement."</p>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-ghost btn-hover-effect">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                  Click to Chat
-              </button>
-            </div>
-          </div>
+                    <h1 class="hero-title gradient-text">HOLITHEMES</h1>
 
-          <!-- Product Card 2 -->
-          <!-- <div class="product-card card-futuristic">
-            <div class="card-accent accent-purple"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <div class="card-icon">🛒</div>
-                <div class="card-plus">+</div>
-              </div>
-              <h3 class="card-title text-glow">WP-Shapes</h3>
-              <p class="card-description">Create and customize dynamic shapes effortlessly for your website design</p>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-ghost btn-hover-effect">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Click to Chat
-              </button>
-            </div>
-          </div> -->
+                    <p class="hero-description">
+                        We build cutting-edge web technologies that bring your digital presence into the future
+                    </p>
 
-          <!-- Product Card 3 -->
-          <!-- <div class="product-card card-futuristic">
-            <div class="card-accent accent-blue"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <div class="card-icon">💻</div>
-                <div class="card-plus">+</div>
-              </div>
-              <h3 class="card-title text-glow">Custom Web Apps</h3>
-              <p class="card-description">Tailor-made web applications for your business needs</p>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-ghost btn-hover-effect">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Click to Chat
-              </button>
-            </div>
-          </div>-->
-        </div> 
-
-        <!-- <div class="section-footer">
-          <a href="https://holithemes.com/plugins/click-to-chat" class="btn btn-primary btn-hover-effect">
-            View All Products
-            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div> -->
-      </div>
-    </section>
-
-    <!-- Services Section
-    <section class="services">
-      <div class="section-bg"></div>
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title text-glow">Our Services</h2>
-          <p class="section-description">
-            Expert services to bring your digital vision to life with futuristic, cutting-edge solutions
-          </p>
-        </div> -->
-
-        <!-- <div class="service-grid"> -->
-          <!-- Service Card 1 -->
-          <!-- <div class="service-card card-futuristic">
-            <div class="service-content">
-              <div class="service-icon accent-indigo">🌐</div>
-              <div class="service-details">
-                <div class="service-header">
-                  <h3 class="service-title text-glow">Web Development</h3>
-                  <div class="service-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
+                    <div class="hero-buttons">
+                        <a href="/products" class="btn btn-primary">
+                            Explore Products
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                        <a href="/services" class="btn btn-outline">
+                            Our Services
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
                 </div>
-                <p class="service-description">Full-stack web development with modern technologies</p>
-              </div>
             </div>
-            <div class="service-accent accent-indigo"></div>
-          </div> -->
 
-          <!-- Service Card 2 -->
-          <!-- <div class="service-card card-futuristic">
-            <div class="service-content">
-              <div class="service-icon accent-pink">✨</div>
-              <div class="service-details">
-                <div class="service-header">
-                  <h3 class="service-title text-glow">UI/UX Design</h3>
-                  <div class="service-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
+            <div class="scroll-indicator">
+                <span>Scroll to explore</span>
+                <div class="scroll-mouse">
+                    <div class="scroll-dot"></div>
                 </div>
-                <p class="service-description">Beautiful, intuitive interfaces that users love</p>
-              </div>
             </div>
-            <div class="service-accent accent-pink"></div>
-          </div> -->
+        </section>
 
-          <!-- Service Card 3 -->
-          <!-- <div class="service-card card-futuristic">
-            <div class="service-content">
-              <div class="service-icon accent-amber">🛍️</div>
-              <div class="service-details">
-                <div class="service-header">
-                  <h3 class="service-title text-glow">E-commerce Solutions</h3>
-                  <div class="service-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
+        <!-- Products Section -->
+        <section class="products-section">
+            <div class="section-bg">
+                <div class="gradient-spot gradient-spot-1"></div>
+                <div class="gradient-spot gradient-spot-2"></div>
+            </div>
+
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title gradient-text">Our Products</h2>
+                    <p class="section-description">
+                        Discover our cutting-edge digital products designed to make your web presence stand out
+                    </p>
                 </div>
-                <p class="service-description">Complete online store setup and optimization</p>
-              </div>
-            </div>
-            <div class="service-accent accent-amber"></div>
-          </div> -->
 
-          <!-- Service Card 4 -->
-          <!-- <div class="service-card card-futuristic">
-            <div class="service-content">
-              <div class="service-icon accent-emerald">⚡</div>
-              <div class="service-details">
-                <div class="service-header">
-                  <h3 class="service-title text-glow">Performance Optimization</h3>
-                  <div class="service-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
+                <div class="products-grid">
+                    <div class="product-card" data-delay="0.1">
+                        <div class="card-header">
+                            <div class="card-icon">🎨</div>
+                            <div class="card-plus pink-gradient">+</div>
+                        </div>
+                        <h3 class="card-title">WordPress Themes</h3>
+                        <p class="card-description">Beautiful, responsive WordPress themes for any website</p>
+                        <button class="btn btn-ghost">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                            Click to Chat
+                        </button>
+                    </div>
+
+                    <div class="product-card" data-delay="0.2">
+                        <div class="card-header">
+                            <div class="card-icon">🛒</div>
+                            <div class="card-plus purple-gradient">+</div>
+                        </div>
+                        <h3 class="card-title">WooCommerce Plugins</h3>
+                        <p class="card-description">Enhance your online store with powerful plugins</p>
+                        <button class="btn btn-ghost">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                            Click to Chat
+                        </button>
+                    </div>
+
+                    <div class="product-card" data-delay="0.3">
+                        <div class="card-header">
+                            <div class="card-icon">💻</div>
+                            <div class="card-plus blue-gradient">+</div>
+                        </div>
+                        <h3 class="card-title">Custom Web Apps</h3>
+                        <p class="card-description">Tailor-made web applications for your business needs</p>
+                        <button class="btn btn-ghost">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                            Click to Chat
+                        </button>
+                    </div>
                 </div>
-                <p class="service-description">Speed up your website for better user experience</p>
-              </div>
+
+                <div class="section-footer">
+                    <a href="/products" class="btn btn-primary">
+                        View All Products
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
             </div>
-            <div class="service-accent accent-emerald"></div>
-          </div> -->
-        <!-- </div> -->
+        </section>
 
-        <!-- <div class="section-footer">
-          <a href="/services" class="btn btn-primary btn-hover-effect gradient-indigo">
-            Explore All Services
-            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>  -->
-      </div>
-    </section>
-  </main> 
+        <!-- Services Section -->
+        <section class="services-section">
+            <div class="section-bg">
+                <div class="gradient-spot gradient-spot-3"></div>
+                <div class="gradient-spot gradient-spot-4"></div>
+            </div>
 
-  <!-- Chat Button -->
-  <div class="chat-button">
-    <button class="chat-toggle">
-      <svg class="chat-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <svg class="close-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-  </div>
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title gradient-text-alt">Our Services</h2>
+                    <p class="section-description">
+                        Expert services to bring your digital vision to life with futuristic, cutting-edge solutions
+                    </p>
+                </div>
 
-  <!-- Chat Panel -->
-  <div class="chat-panel">
-    <div class="chat-header">
-      <h3>Chat with HoliThemes</h3>
-      <p>We typically reply within minutes</p>
+                <div class="services-grid">
+                    <a href="/services/web-development" class="service-card" data-delay="0.1">
+                        <div class="service-content">
+                            <div class="service-icon indigo-gradient">🌐</div>
+                            <div class="service-details">
+                                <div class="service-header">
+                                    <h3 class="service-title">Web Development</h3>
+                                    <div class="service-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </div>
+                                </div>
+                                <p class="service-description">Full-stack web development with modern technologies</p>
+                            </div>
+                        </div>
+                        <div class="service-progress indigo-gradient"></div>
+                    </a>
+
+                    <a href="/services/ui-ux-design" class="service-card" data-delay="0.2">
+                        <div class="service-content">
+                            <div class="service-icon pink-gradient">✨</div>
+                            <div class="service-details">
+                                <div class="service-header">
+                                    <h3 class="service-title">UI/UX Design</h3>
+                                    <div class="service-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </div>
+                                </div>
+                                <p class="service-description">Beautiful, intuitive interfaces that users love</p>
+                            </div>
+                        </div>
+                        <div class="service-progress pink-gradient"></div>
+                    </a>
+
+                    <a href="/services/e-commerce-solutions" class="service-card" data-delay="0.3">
+                        <div class="service-content">
+                            <div class="service-icon amber-gradient">🛍️</div>
+                            <div class="service-details">
+                                <div class="service-header">
+                                    <h3 class="service-title">E-commerce Solutions</h3>
+                                    <div class="service-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </div>
+                                </div>
+                                <p class="service-description">Complete online store setup and optimization</p>
+                            </div>
+                        </div>
+                        <div class="service-progress amber-gradient"></div>
+                    </a>
+
+                    <a href="/services/performance-optimization" class="service-card" data-delay="0.4">
+                        <div class="service-content">
+                            <div class="service-icon emerald-gradient">⚡</div>
+                            <div class="service-details">
+                                <div class="service-header">
+                                    <h3 class="service-title">Performance Optimization</h3>
+                                    <div class="service-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </div>
+                                </div>
+                                <p class="service-description">Speed up your website for better user experience</p>
+                            </div>
+                        </div>
+                        <div class="service-progress emerald-gradient"></div>
+                    </a>
+                </div>
+
+                <div class="section-footer">
+                    <a href="/services" class="btn btn-primary gradient-alt">
+                        Explore All Services
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chat Button -->
+    <div class="chat-button">
+        <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </div>
-    <div class="chat-messages">
-      <div class="chat-message">
-        <p>Hi there! 👋 How can we help you today? Feel free to ask about our products or services.</p>
-        <span class="message-meta">HoliThemes Team • Just now</span>
-      </div>
-    </div>
-    <form class="chat-form">
-      <div class="chat-input-wrapper">
-        <textarea class="chat-input" placeholder="Type your message..." rows="2"></textarea>
-        <button type="submit" class="chat-send" disabled>
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
-    </form>
-  </div>
 
-  <!-- Scripts -->
-  <script src="js/hero-background.js"></script>
-  <script src="js/floating-shapes.js"></script>
-  <script src="js/chat-button.js"></script>
-  <script src="js/main.js"></script>
+    <!-- Chat Window -->
+    <div class="chat-window">
+        <div class="chat-header">
+            <h3>Chat with HoliThemes</h3>
+            <p>We typically reply within minutes</p>
+        </div>
+        <div class="chat-messages">
+            <div class="chat-message">
+                <p>Hi there! 👋 How can we help you today? Feel free to ask about our products or services.</p>
+                <span class="message-meta">HoliThemes Team • Just now</span>
+            </div>
+        </div>
+        <form class="chat-form">
+            <div class="chat-input-container">
+                <textarea class="chat-input" placeholder="Type your message..."></textarea>
+                <button type="submit" class="chat-send-btn" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/hero-background.js"></script>
+    <script src="js/floating-shapes.js"></script>
+    <script src="js/chat-button.js"></script>
 </body>
 </html>

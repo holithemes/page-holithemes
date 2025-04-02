@@ -363,6 +363,8 @@ document.addEventListener('DOMContentLoaded', function() {
       if (shape.type === 'hexagon') {
         shapeEl.style.clipPath = 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)';
       } else if (shape.type === 'diamond') {
+        shapeEl.style.clipPath = 'polygon(50% 0%, 100% 50%,   0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)';
+      } else if (shape.type === 'diamond') {
         shapeEl.style.clipPath = 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)';
       } else if (shape.type === 'circuit') {
         shapeEl.style.clipPath = 'polygon(0% 25%, 25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%)';
