@@ -589,8 +589,12 @@
   
   @media (min-width: 768px) {
     .product-grid {
-      grid-template-columns: repeat(3, 1fr);
-      /* grid-template-columns: repeat(1, 1fr); */
+      /* grid-template-columns: repeat(3, 1fr); */
+
+
+      /* as there is only one element added as now.. added place-items: center. and colums aded 1, 1fr */
+      grid-template-columns: repeat(1, 1fr);
+      place-items: center;
     }
   }
   
