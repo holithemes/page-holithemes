@@ -18,3 +18,16 @@ holithemes/
     └── favicon.ico
 
 
+Code Updates:
+
+Added navigation links to the navbar using the <a> tag to enable seamless redirection.
+
+Commented out a button in the hero section, as the services page is not yet implemented.
+
+In the Our Product section:
+
+Commented out two products.
+
+Added "Click to Chat" along with its description in the <p> element.
+
+Temporarily removed (commented out) the Services section (<section class="services">), as its development has not yet started. It will be reintroduced once work on it begins.
