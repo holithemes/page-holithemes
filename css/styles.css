@@ -1414,7 +1414,7 @@
 
 
 
-
+/* 
 /* Floating particles */
 .holi-particles {
   position: absolute;
@@ -1494,4 +1494,4 @@
   100% {
     transform: translate(0, 0);
   }
-}
+} 
